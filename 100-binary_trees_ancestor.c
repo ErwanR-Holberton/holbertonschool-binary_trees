@@ -10,7 +10,7 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
-	binary_tree_t **path1, **path2, *cur, *res;/*cur means current*/
+	binary_tree_t **path1, **path2, *cur, *res = NULL;/*cur means current*/
 	int i, depth1, depth2;
 
 	if (first == NULL || second == NULL)
