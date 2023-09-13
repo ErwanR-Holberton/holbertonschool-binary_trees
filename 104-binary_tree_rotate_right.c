@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 /**
- * *binary_tree_rotate_right - rotate the tree to the left
+ * *binary_tree_rotate_right - rotate the tree to the right
  * @tree: tree to loop through
  * Return: new address of tree
  */
