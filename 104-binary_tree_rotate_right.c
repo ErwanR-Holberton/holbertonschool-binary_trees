@@ -1,12 +1,13 @@
 #include "binary_trees.h"
 /**
- * binary_tree_is_complete - check if the given tree is complete
+ * *binary_tree_rotate_right - rotate the tree to the left
  * @tree: tree to loop through
- * Return: 1 if complete 0 otherwise
+ * Return: new address of tree
  */
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree)
 {
 	binary_tree_t *temp;
+
 	if (tree == NULL)
 		return (0);
 	temp = tree->left;
@@ -19,5 +20,5 @@ binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree)
 	}
 	temp->right = tree;
 	tree->parent = temp;
-	return(temp);
+	return (temp);
 }
