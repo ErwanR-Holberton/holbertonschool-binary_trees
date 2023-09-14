@@ -30,7 +30,11 @@ const binary_tree_t *second)
 		path2[i] = cur;
 
 	if (path1[0] != path2[0])
+	{
+		free(path1);
+		free(path2);
 		return (0);
+	}
 
 	for (i = 0; i < depth1 && i < depth2; i++)
 		if (path1[i] == path2[i])
