@@ -1,6 +1,31 @@
 #include "binary_trees.h"
 #include "113-bst_search.c"
-
+void handle_child_of_replacement(bst_t *replacement)
+{
+	if (replacement->left != NULL)
+	{
+		if (replacement->parent->left == replacement)
+			replacement->parent->left = replacement->left;
+		else
+			replacement->parent->right = replacement->left;
+		replacement->left->parent = replacement->parent;
+	}
+	else if (replacement->right != NULL)
+	{
+		if (replacement->parent->left == replacement)
+			replacement->parent->left = replacement->right;
+		else
+			replacement->parent->right = replacement->right;
+		replacement->right->parent = replacement->parent;
+	}
+	else
+	{
+		if (replacement->parent->left == replacement)
+			replacement->parent->left = NULL;
+		else
+			replacement->parent->right = NULL;
+	}
+}
 /**
  * *find_replacement - find the node in-order successor to replace the other
  * @node: node that will be removed (searches from this point)
@@ -34,23 +59,7 @@ void replace(bst_t *node, bst_t *replacement)
 	if (replacement == NULL || node == NULL)
 		return;
 
-	if (replacement->left != NULL)
-	{
-		replacement->parent->right = replacement->left;
-		replacement->left->parent = replacement->parent;
-	}
-	else if (replacement->right != NULL)
-	{
-		replacement->parent->left = replacement->right;
-		replacement->right->parent = replacement->parent;
-	}
-	else
-	{
-		if (replacement->parent->left == replacement)
-			replacement->parent->left = NULL;
-		else
-			replacement->parent->right = NULL;
-	}
+	handle_child_of_replacement(replacement);
 
 	replacement->left = node->left;
 	replacement->right = node->right;
