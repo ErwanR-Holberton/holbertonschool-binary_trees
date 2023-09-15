@@ -81,12 +81,24 @@ bst_t *bst_remove(bst_t *root, int value)
 	if (root == NULL)
 		return (NULL);
 
-	printf("0\n");
 	node = bst_search(root, value);
 	if (node == NULL)
 		return (root);
 
-	replacement = find_replacement(node);
+	if (node->left == NULL && node->right == NULL)
+	{
+		if (node->parent != NULL)
+		{
+			if (node->parent->left == node)
+				node->parent->left = NULL;
+			else
+				node->parent->right = NULL;
+		}
+		free(node);
+		return (root);
+	}
+	else
+		replacement = find_replacement(node);
 
 	replace(node, replacement);
 	if (node == root)
