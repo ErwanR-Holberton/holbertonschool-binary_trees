@@ -1,5 +1,11 @@
 #include "binary_trees.h"
 #include "113-bst_search.c"
+
+/**
+ * handle_child_of_replacement - if replacement have child link it to parent
+ * @replacement: node that will be moved
+ * Return: NOTHING
+ */
 void handle_child_of_replacement(bst_t *replacement)
 {
 	if (replacement->left != NULL)
