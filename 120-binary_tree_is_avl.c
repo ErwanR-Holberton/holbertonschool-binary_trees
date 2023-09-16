@@ -1,6 +1,5 @@
 #include "binary_trees.h"
 #include "110-binary_tree_is_bst.c"
-#include "14-binary_tree_balance.c"
 /**
  * binary_tree_is_avl - check if tree is an avl tree
  * @tree: tree to check
